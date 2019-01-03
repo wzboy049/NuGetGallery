@@ -37,6 +37,7 @@ using NuGetGallery.Authentication;
 using NuGetGallery.Configuration;
 using NuGetGallery.Cookies;
 using NuGetGallery.Diagnostics;
+using NuGetGallery.Features;
 using NuGetGallery.Infrastructure;
 using NuGetGallery.Infrastructure.Authentication;
 using NuGetGallery.Infrastructure.Lucene;
@@ -345,6 +346,7 @@ namespace NuGetGallery
                 .As<IContentFileMetadataService>()
                 .InstancePerLifetimeScope();
 
+            RegisterFeatureFlagsService(builder, configuration);
             RegisterMessagingService(builder, configuration);
 
             builder.Register(c => HttpContext.Current.User)
@@ -391,6 +393,32 @@ namespace NuGetGallery
             }
 
             ConfigureAutocomplete(builder, configuration);
+        }
+
+        private static void RegisterFeatureFlagsService(ContainerBuilder builder, ConfigurationService configuration)
+        {
+            builder
+                .Register(context => new FeatureFlagOptions
+                {
+                    // TODO
+                })
+                .AsSelf()
+                .SingleInstance();
+
+            builder
+                .RegisterType<FeatureFlagRefreshService>()
+                .As<IFeatureFlagRefreshService>()
+                .SingleInstance();
+
+            builder
+                .RegisterType<FeatureFlagClient>()
+                .As<IFeatureFlagClient>()
+                .InstancePerDependency();
+
+            builder
+                .RegisterType<FlightClient>()
+                .As<IFlightClient>()
+                .InstancePerDependency();
         }
 
         private static void RegisterMessagingService(ContainerBuilder builder, ConfigurationService configuration)

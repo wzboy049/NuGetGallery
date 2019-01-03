@@ -21,6 +21,7 @@ using NuGet.Services.Search.Client.Correlation;
 using NuGetGallery;
 using NuGetGallery.Configuration;
 using NuGetGallery.Diagnostics;
+using NuGetGallery.Features;
 using NuGetGallery.Infrastructure;
 using NuGetGallery.Infrastructure.Jobs;
 using WebActivatorEx;
@@ -261,6 +262,12 @@ namespace NuGetGallery
                     HostingEnvironment.QueueBackgroundWorkItem(cancellationToken => cloudDownloadCountService.Refresh());
                     jobs.Add(new CloudDownloadCountServiceRefreshJob(TimeSpan.FromMinutes(15), cloudDownloadCountService));
                 }
+            }
+
+            var featureFlags = DependencyResolver.Current.GetService<IFeatureFlagRefreshService>();
+            if (featureFlags != null)
+            {
+                HostingEnvironment.QueueBackgroundWorkItem(featureFlags.RunAsync);
             }
 
             if (jobs.AnySafe())
