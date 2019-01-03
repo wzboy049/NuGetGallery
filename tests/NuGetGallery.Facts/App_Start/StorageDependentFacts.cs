@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Moq;
 using NuGetGallery.Configuration;
+using NuGetGallery.Features;
 using Xunit;
 
 namespace NuGetGallery
@@ -34,7 +35,7 @@ namespace NuGetGallery
             var fileStorageDependentsInterfaces = new HashSet<Type>(fileStorageDependents.SelectMany(t => t.GetInterfaces()));
 
             // file storage dependents that are actually used by Gallery types.
-            var fileStorageDependentsInterfacesUsedByGallery = new HashSet<Type>(allGalleryTypes
+            var fileStorageDependentsInterfacesUsedByGallery = new HashSet<Type>(allGalleryAndCoreTypes
                     .SelectMany(gt => gt
                         .GetConstructors()
                         .SelectMany(c => c
@@ -73,7 +74,8 @@ namespace NuGetGallery
             Assert.Contains(typeof(UploadFileService), implementationToInterface.Keys);
             Assert.Contains(typeof(CoreLicenseFileService), implementationToInterface.Keys);
             Assert.Contains(typeof(RevalidationStateService), implementationToInterface.Keys);
-            Assert.Equal(7, implementationToInterface.Count);
+            Assert.Contains(typeof(FeatureFlagFileStorageService), implementationToInterface.Keys);
+            Assert.Equal(8, implementationToInterface.Count);
             Assert.Equal(typeof(ICertificateService), implementationToInterface[typeof(CertificateService)]);
             Assert.Equal(typeof(IContentService), implementationToInterface[typeof(ContentService)]);
             Assert.Equal(typeof(IPackageFileService), implementationToInterface[typeof(PackageFileService)]);
@@ -81,6 +83,8 @@ namespace NuGetGallery
             Assert.Equal(typeof(IUploadFileService), implementationToInterface[typeof(UploadFileService)]);
             Assert.Equal(typeof(ICoreLicenseFileService), implementationToInterface[typeof(CoreLicenseFileService)]);
             Assert.Equal(typeof(IRevalidationStateService), implementationToInterface[typeof(RevalidationStateService)]);
+            Assert.Equal(typeof(IFeatureFlagStorageService), implementationToInterface[typeof(FeatureFlagFileStorageService)]);
+
         }
 
         [Fact]
