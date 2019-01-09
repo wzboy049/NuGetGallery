@@ -85,7 +85,6 @@ namespace NuGetGallery
             Assert.Equal(typeof(ICoreLicenseFileService), implementationToInterface[typeof(CoreLicenseFileService)]);
             Assert.Equal(typeof(IRevalidationStateService), implementationToInterface[typeof(RevalidationStateService)]);
             Assert.Equal(typeof(IFeatureFlagStorageService), implementationToInterface[typeof(FeatureFlagFileStorageService)]);
-
         }
 
         [Fact]
