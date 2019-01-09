@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using NuGet.Services.FeatureFlags;
 
 namespace NuGetGallery.Features
 {
@@ -18,13 +19,13 @@ namespace NuGetGallery.Features
             _serializer = new JsonSerializer();
         }
 
-        public async Task<FeatureFlags> GetAsync()
+        public async Task<FeatureFlagsState> GetAsync()
         {
-            using (var stream = await _storage.GetFileAsync(_options.Container, _options.Blob))
+            using (var stream = await _storage.GetFileAsync(CoreConstants.Folders.FeatureFlagsContainerFolderName, CoreConstants.FeatureFlagsFileName))
             using (var streamReader = new StreamReader(stream))
             using (var reader = new JsonTextReader(streamReader))
             {
-                return _serializer.Deserialize<FeatureFlags>(reader);
+                return _serializer.Deserialize<FeatureFlagsState>(reader);
             }
         }
     }

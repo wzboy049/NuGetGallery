@@ -134,20 +134,7 @@
     <Compile Include="Extensions\StorageExceptionExtensions.cs" />
     <Compile Include="Extensions\UserExtensionsCore.cs" />
     <Compile Include="Extensions\ValidationIssueExtensions.cs" />
-    <Compile Include="Features\FeatureFlagBlobStorageService.cs" />
-    <Compile Include="Features\FeatureFlagClient.cs" />
     <Compile Include="Features\FeatureFlagFileStorageService.cs" />
-    <Compile Include="Features\FeatureFlagOptions.cs" />
-    <Compile Include="Features\FeatureFlagRefreshService.cs" />
-    <Compile Include="Features\FlightClient.cs" />
-    <Compile Include="Features\IFeatureFlagClient.cs" />
-    <Compile Include="Features\IFeatureFlagRefreshService.cs" />
-    <Compile Include="Features\IFeatureFlagStorageService.cs" />
-    <Compile Include="Features\IFlightClient.cs" />
-    <Compile Include="Features\LatestFlagsResult.cs" />
-    <Compile Include="Features\Models\FeatureStatus.cs" />
-    <Compile Include="Features\Models\FeatureFlags.cs" />
-    <Compile Include="Features\Models\Flight.cs" />
     <Compile Include="ICloudStorageStatusDependency.cs" />
     <Compile Include="Infrastructure\AzureEntityList.cs" />
     <Compile Include="Infrastructure\ElmahException.cs" />
@@ -230,16 +217,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NuGet.Services.Entities">
-      <Version>2.40.0</Version>
+      <Version>2.41.0-loshar-feature-flags-2310813</Version>
+    </PackageReference>
+    <PackageReference Include="NuGet.Services.FeatureFlags">
+      <Version>2.41.0-loshar-feature-flags-2310813</Version>
     </PackageReference>
     <PackageReference Include="NuGet.Services.Messaging.Email">
-      <Version>2.40.0</Version>
+      <Version>2.41.0-loshar-feature-flags-2310813</Version>
     </PackageReference>
     <PackageReference Include="NuGet.Services.Validation">
-      <Version>2.40.0</Version>
+      <Version>2.41.0-loshar-feature-flags-2310813</Version>
     </PackageReference>
     <PackageReference Include="NuGet.Services.Validation.Issues">
-      <Version>2.40.0</Version>
+      <Version>2.41.0-loshar-feature-flags-2310813</Version>
     </PackageReference>
     <PackageReference Include="NuGet.StrongName.AnglicanGeek.MarkdownMailer">
       <Version>1.2.0</Version>

@@ -17,6 +17,7 @@ using System.Web.UI;
 using Elmah;
 using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using NuGet.Services.FeatureFlags;
 using NuGet.Services.Search.Client.Correlation;
 using NuGetGallery;
 using NuGetGallery.Configuration;

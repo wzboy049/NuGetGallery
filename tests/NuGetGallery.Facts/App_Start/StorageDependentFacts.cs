@@ -4,7 +4,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autofac;
 using Moq;
+using NuGet.Services.FeatureFlags;
 using NuGetGallery.Configuration;
 using NuGetGallery.Features;
 using Xunit;
@@ -52,7 +54,6 @@ namespace NuGetGallery
             // Assert
             var actual = new HashSet<Type>(dependents.Select(x => x.ImplementationType));
 
-            Assert.Subset(expected, actual);
             Assert.Subset(actual, expected);
         }
 

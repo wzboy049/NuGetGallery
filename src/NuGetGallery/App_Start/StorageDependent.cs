@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NuGet.Services.FeatureFlags;
 using NuGetGallery.Configuration;
 using NuGetGallery.Features;
 
