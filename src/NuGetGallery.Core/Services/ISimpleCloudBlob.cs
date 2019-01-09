@@ -23,7 +23,6 @@ namespace NuGetGallery
         Task DeleteIfExistsAsync();
         Task DownloadToStreamAsync(Stream target);
         Task DownloadToStreamAsync(Stream target, AccessCondition accessCondition);
-        Task<string> DownloadTextAsync();
 
         Task<bool> ExistsAsync();
         Task SetPropertiesAsync();

@@ -56,11 +56,6 @@ namespace NuGetGallery
             await _blob.DownloadToStreamAsync(target, accessCondition, options, operationContext: null);
         }
 
-        public async Task<string> DownloadTextAsync()
-        {
-            return await _blob.DownloadTextAsync();
-        }
-
         public async Task<bool> ExistsAsync()
         {
             return await _blob.ExistsAsync();
