@@ -433,7 +433,9 @@
     <Compile Include="Services\ActionsRequiringPermissions.cs" />
     <Compile Include="Services\AsynchronousPackageValidationInitiator.cs" />
     <Compile Include="Infrastructure\Mail\BackgroundMarkdownMessageService.cs" />
+    <Compile Include="Services\FeatureFlagService.cs" />
     <Compile Include="Services\GalleryContentFileMetadataService.cs" />
+    <Compile Include="Services\IFeatureFlagService.cs" />
     <Compile Include="Services\InvalidLicenseUrlValidationMessage.cs" />
     <Compile Include="Services\InvalidUrlEncodingForLicenseUrlValidationMessage.cs" />
     <Compile Include="Services\ISymbolPackageUploadService.cs" />
@@ -1546,6 +1548,7 @@
     <Content Include="App_Data\Files\Content\ReadOnly.md" />
     <Content Include="App_Data\Files\Content\Team.json" />
     <Content Include="App_Data\Files\Content\Terms-Of-Use.md" />
+    <Content Include="App_Data\Files\Feature-Flags\Flags.json" />
     <Content Include="Branding\Views\web.config" />
     <Compile Include="Views\NuGetViewBase.cs" />
     <Content Include="Scripts\d3\d3.js" />

@@ -401,7 +401,8 @@ namespace NuGetGallery
             builder
                 .Register(context => new FeatureFlagOptions
                 {
-                    // TODO
+                    RefreshInterval = configuration.Current.FeatureFlagsRefreshInterval,
+                    MaximumStaleness = configuration.Current.FeatureFlagsMaximumStaleness,
                 })
                 .AsSelf()
                 .SingleInstance();
@@ -419,6 +420,11 @@ namespace NuGetGallery
             builder
                 .RegisterType<FlightClient>()
                 .As<IFlightClient>()
+                .InstancePerDependency();
+
+            builder
+                .RegisterType<FeatureFlagService>()
+                .As<IFeatureFlagService>()
                 .InstancePerDependency();
         }
 

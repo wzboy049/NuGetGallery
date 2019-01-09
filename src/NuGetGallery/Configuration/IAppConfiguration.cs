@@ -91,6 +91,17 @@ namespace NuGetGallery.Configuration
         bool AzureStorageReadAccessGeoRedundant { get; set; }
 
         /// <summary>
+        /// How frequently the feature flags should be refreshed.
+        /// </summary>
+        TimeSpan FeatureFlagsRefreshInterval { get; set; }
+
+        /// <summary>
+        /// The maximum refresh staleness allowed for feature flags.
+        /// If the threshold is reached, the returned feature flags will be labeled as stale.
+        /// </summary>
+        TimeSpan FeatureFlagsMaximumStaleness { get; set; }
+
+        /// <summary>
         /// Gets a boolean indicating whether asynchronous package validation is enabled.
         /// </summary>
         bool AsynchronousPackageValidationEnabled { get; set; }
